@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище DatabaseFirstModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "DatabaseFirst.dbo.testTable" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="testTable">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="column1" Type="nvarchar" MaxLength="50" />
+    <Property Name="column2" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="Хранилище DatabaseFirstModelContainer">
+    <EntitySet Name="testTable" EntityType="Self.testTable" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [testTable].[ID] AS [ID], 
+    [testTable].[column1] AS [column1], 
+    [testTable].[column2] AS [column2]
+    FROM [dbo].[testTable] AS [testTable]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

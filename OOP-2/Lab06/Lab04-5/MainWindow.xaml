@@ -1,0 +1,150 @@
+﻿<Window x:Class="Lab04_5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab04_5"
+        mc:Ignorable="d"
+        Title="{DynamicResource _FileName}" AllowDrop="True" Height="550" Width="720"  Cursor="Pen">
+    <Window.Resources>
+        <ControlTemplate x:Key="ButtonControlTemplate1" TargetType="{x:Type Button}">
+            <Border CornerRadius="5" 
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="1"
+                Height="30" Width="30">
+                <ContentControl FontSize="24" 
+                    FontFamily="Times New Roman"
+                    FontWeight="Bold"
+                    FontStyle="Normal" 
+                    Content="C" 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center" />
+            </Border>
+        </ControlTemplate>
+        <ControlTemplate x:Key="ButtonControlTemplate2" TargetType="{x:Type Button}">
+            <Border CornerRadius="5" 
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="1"
+                Height="30" Width="30">
+                <ContentControl FontSize="24" 
+                    FontFamily="Times New Roman"
+                    FontWeight="Bold"
+                    FontStyle="Normal" 
+                    Content="C" 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center" />
+            </Border>
+        </ControlTemplate>
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Open" Executed="Open_Executed" />
+        <CommandBinding Command="ApplicationCommands.Save" Executed="Save_Executed" />
+        <CommandBinding Command="ApplicationCommands.New" Executed="New_Executed" />
+        <CommandBinding Command="ApplicationCommands.Delete" Executed="Delete_Executed" />
+        <CommandBinding Command="ApplicationCommands.Close" Executed="Close_Executed" />
+    </Window.CommandBindings>
+
+    <Grid AllowDrop="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" Width="Auto">
+            <MenuItem Header="{DynamicResource _File}" x:Name="File" >
+                <MenuItem Header="{DynamicResource _New}" Command="ApplicationCommands.New"  Style="{DynamicResource MenuItemItemStyle}"/>
+                <MenuItem Header="{DynamicResource _Save}" Command="ApplicationCommands.Save"  Style="{DynamicResource MenuItemItemStyle}"/>
+                <MenuItem Header="{DynamicResource _Open}"  Command="ApplicationCommands.Open"  Style="{DynamicResource MenuItemItemStyle}"/>
+                <Separator/>
+                <MenuItem Header="{DynamicResource _RecentFiles}" x:Name="recentFiles"  Style="{DynamicResource MenuItemItemStyle}"/>
+            </MenuItem>
+            <MenuItem Header="{DynamicResource _Edit}" x:Name="Edit">
+                <MenuItem Header="{DynamicResource _Undo}" CommandTarget="{Binding ElementName=this.rtbEditor}" Command="Undo"  Style="{DynamicResource MenuItemItemStyle}"/>
+                <MenuItem Header="{DynamicResource _Redo}" CommandTarget="{Binding ElementName=this.rtbEditor}" Command="Redo"  Style="{DynamicResource MenuItemItemStyle}"/>
+                <MenuItem Header="{DynamicResource _Cut}" CommandTarget="{Binding ElementName=this.rtbEditor}" Command="Cut"  Style="{DynamicResource MenuItemItemStyle}"/>
+                <MenuItem Header="{DynamicResource _Copy}" CommandTarget="{Binding ElementName=this.rtbEditor}" Command="Copy"  Style="{DynamicResource MenuItemItemStyle}"/>
+                <MenuItem Header="{DynamicResource _Paste}" CommandTarget="{Binding ElementName=this.rtbEditor}" Command="Paste"  Style="{DynamicResource MenuItemItemStyle}"/>
+            </MenuItem>
+            <MenuItem Header="{DynamicResource _Font}" x:Name="Font" Click="Font_Executed"/>
+            <MenuItem Header="{DynamicResource _Color}" x:Name="Colorr" Click="Color_Executed"/>
+            <MenuItem Header="{DynamicResource _Lang}" x:Name="Lang" Style="{DynamicResource MenuItemItemStyle}">
+                <MenuItem Header="{DynamicResource _Ru}" Click="SetRussian"  Style="{DynamicResource MenuItemItemStyle}"/>
+                <MenuItem Header="{DynamicResource _Eng}" Click="SetEnglish"  Style="{DynamicResource MenuItemItemStyle}"/>
+            </MenuItem>
+
+            <ToolBar x:Name="toolBar" AllowDrop="True" Grid.Row="0" Height="Auto">
+                <Button x:Name="_Open" ToolTip="Open" Command="ApplicationCommands.Open">
+                    <Image x:Name="Folder" Source="resources/folder.png" Width="28" Height="28" />
+                </Button>
+                <Button x:Name="_Save" ToolTip="Save" Command="ApplicationCommands.Save">
+                    <Image x:Name="Save" Source="resources/disk.png" Width="28" Height="28" />
+                </Button>
+                <Button x:Name="_Undo" ToolTip="Undo" CommandTarget="{Binding ElementName=this.rtbEditor}" Command="Undo">
+                    <Image x:Name="Undo" Source="resources/undo.png" Width="28" Height="28" />
+                </Button>
+                <Button x:Name="_Redo" ToolTip="Redo"  CommandTarget="{Binding ElementName=this.rtbEditor}" Command="Redo">
+                    <Image x:Name="Redo" Source="resources/redo.png" Width="28" Height="28" />
+                </Button>
+                <Separator />
+                <ToggleButton Style="{DynamicResource TB}" Command="EditingCommands.ToggleBold" Name="btnBold">
+                    <Image x:Name="Bold" Source="resources/text_bold.png" Width="28" Height="28" />
+                </ToggleButton>
+                <ToggleButton  Style="{DynamicResource TB}" Command="EditingCommands.ToggleItalic" Name="btnItalic">
+                    <Image x:Name="Italic" Source="resources/text_italic.png" Width="28" Height="28" />
+                </ToggleButton>
+                <ToggleButton  Style="{DynamicResource TB}" Command="EditingCommands.ToggleUnderline" Name="btnUnderline">
+                    <Image x:Name="Underline" Source="resources/text_underline.png" Width="28" Height="28" />
+                </ToggleButton>
+                <Separator />
+                <Button  Style="{DynamicResource Temp}" x:Name="Clear" Template="{DynamicResource ButtonControlTemplate2}" Click="Clear_Ex" />
+                <Separator/>
+                <ComboBox Name="cmbFontFamily" Width="120" SelectionChanged="cmbFontFamily_SelectionChanged"/>
+                <Slider x:Name="sldFontSize" Value="16" Minimum="4" Maximum="72" Width="100" 
+                        ValueChanged="sldFontSize_ValueChanged" IsSnapToTickEnabled="True" 
+                        TickFrequency="2" TickPlacement="Both" />
+                <Label VerticalAlignment="Center" Content="{Binding ElementName=sldFontSize, Path=Value}"/>
+                <Label VerticalAlignment="Center" Content="{DynamicResource _Theme}"/>
+                <ComboBox x:Name="Theme" Margin="0 8 15 8" MinWidth="70"/>
+            </ToolBar>
+        </Menu>
+        <RichTextBox x:Name="rtbEditor" Grid.Row="1" TextChanged="OnTextChanged" SelectionChanged="rtbEditor_SelectionChanged">
+            <RichTextBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="{DynamicResource _Cut}" Command="Cut"/>
+                    <MenuItem Header="{DynamicResource _Copy}" Command="Copy"/>
+                    <MenuItem Header="{DynamicResource _Paste}" Command="Paste"/>
+                    <MenuItem Header="{DynamicResource _Delete}" Command="ApplicationCommands.Delete"/>
+                    <MenuItem Header="{DynamicResource _Close}" Command="ApplicationCommands.Close"/>
+                </ContextMenu>
+            </RichTextBox.ContextMenu>
+            <RichTextBox.LayoutTransform>
+                <ScaleTransform
+                    ScaleX="{Binding ElementName=zoom,Path=Value}"
+                    ScaleY="{Binding ElementName=zoom,Path=Value}"></ScaleTransform>
+            </RichTextBox.LayoutTransform>
+        </RichTextBox>
+
+        <Grid Style="{DynamicResource StatusBarStyle}"  AllowDrop="True" Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2.5*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StatusBar Style="{DynamicResource StatusBarStyle}" Grid.Column="0">
+                <Label Content="{DynamicResource _Symbols}"/>
+                <TextBox Name="status1" Width="30" />
+                <Label Content="{DynamicResource _Words}"/>
+                <TextBox Name="status2" Width="30" />
+            </StatusBar>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="1">
+                <local:CustomControl x:Name="CustomControl" />
+            </StackPanel>
+
+            <StatusBar Style="{DynamicResource StatusBarStyle}" Grid.Column="2">
+                <Label Content="{StaticResource _Scale}"/>
+                <Slider x:Name="zoom" Minimum="0.3" Maximum="5" Value="1" Width="100"/>
+            </StatusBar>
+        </Grid>
+
+    </Grid>
+</Window>

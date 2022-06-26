@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<ArrayOfComputer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Computer>
+    <TypeOfComputer>сервер</TypeOfComputer>
+    <Processor>
+      <Producer>aaaaa</Producer>
+      <Series>1234</Series>
+      <Model>bbbbbbbbb</Model>
+      <CountOfCores>3</CountOfCores>
+      <Frequency>5</Frequency>
+      <MaxFrequency>9</MaxFrequency>
+      <BitArchitecture>64</BitArchitecture>
+      <CacheL1>24</CacheL1>
+      <CacheL2>3</CacheL2>
+      <CacheL3>6</CacheL3>
+    </Processor>
+    <GraphicCard>
+      <Producer>bbbbbbbbbb</Producer>
+      <Series>1234</Series>
+      <Model>ffffff</Model>
+      <Frequency>500</Frequency>
+      <DiretX11>true</DiretX11>
+      <Memory>3</Memory>
+    </GraphicCard>
+    <SizeRAM>25</SizeRAM>
+    <TypeOfRAM>SDRAM</TypeOfRAM>
+    <SizeHD>4</SizeHD>
+    <TypeOfHD>HDD</TypeOfHD>
+    <PurchaseDate>21-03-2022</PurchaseDate>
+    <Cost>605</Cost>
+  </Computer>
+</ArrayOfComputer>

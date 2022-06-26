@@ -1,0 +1,15 @@
+D:\Лабы\ООП второй сем\labi\OOP-2\Lab08\Lab08\bin\Debug\Lab08.exe.config
+D:\Лабы\ООП второй сем\labi\OOP-2\Lab08\Lab08\bin\Debug\Lab08.exe
+D:\Лабы\ООП второй сем\labi\OOP-2\Lab08\Lab08\bin\Debug\Lab08.pdb
+D:\Лабы\ООП второй сем\labi\OOP-2\Lab08\Lab08\obj\Debug\MainWindow.g.cs
+D:\Лабы\ООП второй сем\labi\OOP-2\Lab08\Lab08\obj\Debug\App.g.cs
+D:\Лабы\ООП второй сем\labi\OOP-2\Lab08\Lab08\obj\Debug\Lab08_MarkupCompile.cache
+D:\Лабы\ООП второй сем\labi\OOP-2\Lab08\Lab08\obj\Debug\Lab08_MarkupCompile.lref
+D:\Лабы\ООП второй сем\labi\OOP-2\Lab08\Lab08\obj\Debug\MainWindow.baml
+D:\Лабы\ООП второй сем\labi\OOP-2\Lab08\Lab08\obj\Debug\Lab08.g.resources
+D:\Лабы\ООП второй сем\labi\OOP-2\Lab08\Lab08\obj\Debug\Lab08.Properties.Resources.resources
+D:\Лабы\ООП второй сем\labi\OOP-2\Lab08\Lab08\obj\Debug\Lab08.csproj.GenerateResource.cache
+D:\Лабы\ООП второй сем\labi\OOP-2\Lab08\Lab08\obj\Debug\Lab08.csproj.CoreCompileInputs.cache
+D:\Лабы\ООП второй сем\labi\OOP-2\Lab08\Lab08\obj\Debug\Lab08.exe
+D:\Лабы\ООП второй сем\labi\OOP-2\Lab08\Lab08\obj\Debug\Lab08.pdb
+D:\Лабы\ООП второй сем\labi\OOP-2\Lab08\Lab08\obj\Debug\Lab08.csproj.AssemblyReference.cache

@@ -1,0 +1,76 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Lab04_5.resources">
+    <Style x:Key="TB">
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Control.IsMouseOver" Value="True"/>
+                    <Condition Property="Control.IsEnabled" Value="True"/>
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter Property="Control.Background" Value="Gray"/>
+                </MultiTrigger.Setters>
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="Temp">
+        <Setter Property="Control.Foreground" Value="Black"/>
+        <Setter Property="Control.BorderBrush" Value="Black"/>
+    </Style>
+    <Style TargetType="RichTextBox">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ElementName=sldFontSize, Path=Value}" Value="42">
+                <Setter Property="Control.Background" Value="LightGray"/>
+            </DataTrigger>
+        </Style.Triggers>
+        <Style.Setters>
+            <Setter Property="Control.FontFamily" Value="Verdana"/>
+            <Setter Property="Control.FontSize" Value="18px"/>
+            <Setter Property="Control.Background" Value="White"/>
+            <Setter Property="Control.Foreground" Value="Black"/>
+        </Style.Setters>
+    </Style>
+    <Style TargetType="Menu">
+        <Setter Property="Control.FontFamily" Value="Verdana"/>
+        <Setter Property="Control.Background" Value="White"/>
+        <Setter Property="Control.Foreground" Value="Black"/>
+    </Style>
+    <Style TargetType="MenuItem">
+        <Setter Property="Control.Background" Value="White"/>
+        <Setter Property="Control.Foreground" Value="Black"/>
+    </Style>
+    <Style x:Key="MenuItemItemStyle" TargetType="MenuItem">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+    </Style>
+    <Style TargetType="ToolBar">
+        <Setter Property="Control.Background" Value="White"/>
+        <Setter Property="Control.Foreground" Value="Black"/>
+    </Style>
+    <Style TargetType="Window">
+        <Setter Property="Control.Background" Value="Black"/>
+    </Style>
+    <Style TargetType="Label">
+        <Setter Property="Control.Foreground" Value="Black"/>
+        <Setter Property="Control.FontFamily" Value="Verdana"/>
+    </Style>
+    <Style x:Key="StatusBarStyle">
+        <Setter Property="Control.Background" Value="White"/>
+    </Style>
+    <Style TargetType="ContextMenu">
+        <Setter Property="Control.Background" Value="White"/>
+        <Setter Property="Control.Foreground" Value="Black"/>
+        <Setter Property="Control.FontFamily" Value="Verdana"/>
+    </Style>
+    <Style x:Key="CustomControlStyle">
+        <Style.Setters>
+            <Setter Property="Control.Background" Value="White"/>
+            <Setter Property="Control.Foreground" Value="Black"/>
+            <Setter Property="Control.FontFamily" Value="Verdana"/>
+            <Setter Property="Control.FontSize" Value="14"/>
+            <Setter Property="Control.BorderBrush" Value="Black"/>
+            <Setter Property="Control.BorderThickness" Value="1"/>
+        </Style.Setters>
+    </Style>
+</ResourceDictionary>
